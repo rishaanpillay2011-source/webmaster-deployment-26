@@ -1,0 +1,191 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Code & Repo — Pathfinders</title>
+  <meta name="description" content="Explore the open-source code and repository behind Pathfinders." />
+
+  <script src="theme-init.js"></script>
+
+  <link rel="stylesheet"
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap" />
+  <link rel="stylesheet" href="style.css" />
+</head>
+
+<body>
+  <div class="page-wave-bg" aria-hidden="true"></div>
+
+  <div class="page">
+    <div id="nav-container"></div>
+
+    <main class="code-shell">
+      <div class="section-container" style="text-align: left; max-width: 800px; margin: 0 auto;">
+        <h1 class="dir-title page-title scroll-reveal" style="text-align: center;">Code & Repository</h1>
+
+        <div class="community-intro scroll-reveal" style="text-align: center; margin-bottom: 4rem;">
+          <p>
+            Pathfinders is built on a modern, lightweight, and incredibly fast tech stack. Our goal is to ensure the
+            platform remains fully accessible, performant, and easy to maintain for future contributors.
+          </p>
+          <p>
+            We believe in open-source development and transparency. This project relies entirely on raw web standards —
+            HTML, CSS, and Vanilla JavaScript — avoiding heavy frameworks to deliver an optimal experience on any
+            device, from desktop to low-bandwidth mobile.
+          </p>
+        </div>
+
+        <div class="in-depth-section scroll-reveal">
+          <h2 class="ref-section-title">HTML & CSS Architecture</h2>
+          <p style="margin-bottom: 1rem; line-height: 1.7; font-size: 1.05rem;">
+            The foundation of Pathfinders is built on semantic HTML5. This approach ensures maximum accessibility for
+            screen readers and search engines. We strictly avoid deeply nested, meaningless <code>&lt;div&gt;</code>
+            structures, preferring elements like <code>&lt;header&gt;</code>, <code>&lt;main&gt;</code>,
+            <code>&lt;section&gt;</code>, and <code>&lt;article&gt;</code> to clearly outline the document's structure.
+          </p>
+          <p style="line-height: 1.7; font-size: 1.05rem;">
+            Styling is handled entirely by vanilla CSS, utilizing modern features such as CSS Grid, Flexbox, and CSS
+            Custom Properties (Variables). By defining a central design token system in our <code>:root</code>, we can
+            seamlessly switch between the Light and Dark themes. The dark mode logic alters these variables globally,
+            ensuring high-contrast readability without duplicating stylesheets. The layout is fluid and responsive,
+            relying on <code>clamp()</code>, <code>min()</code>, and <code>max()</code> functions along with CSS media
+            queries to dynamically adjust typography and spacing from ultra-wide desktops down to mobile devices.
+          </p>
+        </div>
+
+        <div class="in-depth-section scroll-reveal" style="margin-top: 3rem;">
+          <h2 class="ref-section-title">JavaScript for Functionality</h2>
+          <p style="margin-bottom: 1rem; line-height: 1.7; font-size: 1.05rem;">
+            To keep the application fast and free of unnecessary bloat, we chose Vanilla JavaScript over heavy frontend
+            frameworks like React or Vue. Our functionality is modularized into discrete files within the
+            <code></code> directory.
+          </p>
+          <p style="line-height: 1.7; font-size: 1.05rem;">
+            This includes the theme toggle initialization, dynamic navigation rendering, and form handling. A
+            significant portion of the logic is dedicated to the Resource Directory and Map pages. For the directory,
+            JavaScript fetches and filters the JSON resource data in real-time, instantly updating the DOM without page
+            reloads. For the map, we integrate Leaflet.js to plot interactive markers based on community resource
+            coordinates, providing spatial awareness for users seeking localized help.
+          </p>
+        </div>
+
+        <div class="in-depth-section scroll-reveal" style="margin-top: 3rem;">
+          <h2 class="ref-section-title">JavaScript for Animations</h2>
+          <p style="margin-bottom: 1rem; line-height: 1.7; font-size: 1.05rem;">
+            The engaging, cinematic feel of the Pathfinders website is powered by the GreenSock Animation Platform (GSAP). While our custom animation logic is neatly organized in the <code></code> folder, the core GSAP library files themselves are located in the <code></code> directory.
+          </p>
+          <p style="margin-bottom: 1rem; line-height: 1.7; font-size: 1.05rem; opacity: 0.8; font-style: italic;">
+            Note: The <code></code> folder contains external library code provided by GreenSock and was not authored by the Pathfinders development team.
+          </p>
+          <p style="line-height: 1.7; font-size: 1.05rem;">
+            Instead of relying on generic CSS transitions tied to scroll events, ScrollTrigger calculates precise scroll
+            progress to scrub animations. This drives the parallax wave effects, the sticky image stacking section on
+            the homepage, and the staggered reveal of UI elements as they enter the viewport. We also use the SplitText
+            plugin to separate headings into individual words and characters, allowing us to choreograph intricate,
+            randomized fade-in effects that give the typography a vibrant, organic feel.
+          </p>
+        </div>
+
+        <div class="repo-section scroll-reveal"
+          style="margin-top: 5rem; border-top: 1px solid var(--border); padding-top: 4rem; text-align: center;">
+          <h2 class="ref-section-title">Open Source Repository</h2>
+          <p class="repo-desc"
+            style="max-width: 650px; margin: 1rem auto 2rem; color: var(--muted); line-height: 1.7; font-size: 1.05rem;">
+            Want to contribute, fork the project, or explore the raw code? The entire codebase is available on GitHub.
+            We welcome pull requests, bug reports, and feature suggestions from the community. Whether you're fixing a
+            typo in the CSS or proposing a new directory feature, your contributions help make Pathfinders better for
+            everyone.
+          </p>
+
+          <div class="repo-btn-group" style="display: flex; gap: 1.25rem; justify-content: center; flex-wrap: wrap; margin-top: 1rem;">
+            <a href="https://github.com/rishaanpillay2011-source/Webmaster-26-Final" target="_blank" rel="noopener noreferrer" class="repo-btn">
+              <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M15 22v-4a4.8 4.8 0 0 0-1-3.2c3 0 6-2 6-5.5.08-1.25-.27-2.48-1-3.5.28-1.15.28-2.35 0-3.5 0 0-1 0-3 1.5-2.64-.5-5.36-.5-8 0C6 2 5 2 5 2c-.3 1.15-.3 2.35 0 3.5A5.403 5.403 0 0 0 4 9c0 3.5 3 5.5 6 5.5-.39.49-.68 1.05-.85 1.65-.17.6-.22 1.23-.15 1.85v4"></path>
+                <path d="M9 18c-4.51 2-5-2-7-2"></path>
+              </svg>
+              View on GitHub
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        <div>
+          <h3>Pathfinders</h3>
+          <p>A Northern Virginia gateway to community services, nonprofits, and civic programs for underserved
+            communities.</p>
+        </div>
+        <div>
+          <h4>Directory</h4>
+          <div class="footer-links">
+            <a href="directory.html">Browse All</a>
+            <a href="directory.html">Housing</a>
+            <a href="directory.html">Food</a>
+          </div>
+        </div>
+        <div>
+          <h4>Resources</h4>
+          <div class="footer-links">
+            <a href="about.html">About</a>
+            <a href="code.html">Code & Repo</a>
+            <a href="submit.html">Submit a Resource</a>
+            <a href="map.html">Resource Map</a>
+            <a href="references.html">References</a>
+          </div>
+        </div>
+        <div>
+          <h4>Contact</h4>
+          <p>
+            NoVA Resource Network<br />
+            info@pathfinders.org
+          </p>
+        </div>
+      </div>
+      <div class="footer-bottom">© 2026 Pathfinders. All rights reserved.</div>
+    </footer>
+  </div>
+
+  <!-- GSAP Core + Plugins -->
+  <script src="gsap.min.js"></script>
+  <script src="ScrollTrigger.min.js"></script>
+
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <script src="smooth-scroll.js"></script>
+  <script src="nav.js"></script>
+  <script src="community-gsap.js"></script>
+  <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      lucide.createIcons();
+      
+      const sectionsToAnimate = document.querySelectorAll('.repo-section, .in-depth-section');
+      
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        sectionsToAnimate.forEach(section => {
+          section.classList.remove("scroll-reveal");
+          gsap.set(section, { autoAlpha: 0, y: 30 });
+          gsap.fromTo(
+            section,
+            { y: 30, autoAlpha: 0 },
+            {
+              autoAlpha: 1,
+              y: 0,
+              duration: 0.9,
+              ease: "power3.out",
+              scrollTrigger: {
+                trigger: section,
+                start: "top 90%",
+                toggleActions: "restart none none reset",
+              },
+            }
+          );
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
