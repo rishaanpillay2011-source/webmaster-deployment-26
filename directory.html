@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="en">
+<html lang="en" class="dark">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -9,7 +9,6 @@
       content="Search and filter approved Pathfinders resources serving underserved communities nationwide."
     />
 
-    <script src="theme-init.js"></script>
 
     <link
       rel="stylesheet"
@@ -18,7 +17,7 @@
     <link rel="stylesheet" href="style.css" />
   </head>
 
-  <body>
+  <body class="page-directory">
     <div class="page-wave-bg" aria-hidden="true"></div>
 
     <div class="page">
@@ -27,45 +26,109 @@
       <main class="page-body">
         <div class="section-container">
           <h1 class="dir-title page-title scroll-reveal">Directory</h1>
+        </div>
 
-          <div class="directory-controls scroll-reveal">
-            <div class="search-wrap-modern">
-              <i data-lucide="search" class="search-icon"></i>
-              <input
-                id="directory-search"
-                class="search-input-modern"
-                type="text"
-                placeholder="Search resources..."
-                aria-label="Search resources"
-              />
+        <div class="directory-shell">
+          <aside class="dir-filters" aria-label="Filters">
+            <div class="dir-filter-card">
+              <div class="dir-filter-top">
+                <div class="dir-filter-count">
+                  <span id="results-count-pill" class="dir-count-pill">Loading…</span>
+                </div>
+                <button class="dir-clear-btn" id="dir-clear-btn" type="button">Clear</button>
+              </div>
+
+              <div class="dir-filter-section">
+                <div class="dir-filter-title">Quick filters</div>
+                <label class="dir-check">
+                  <input id="filter-open-now" type="checkbox" />
+                  <span>Open now</span>
+                </label>
+                <label class="dir-check">
+                  <input id="filter-same-day" type="checkbox" />
+                  <span>Same-day help</span>
+                </label>
+                <label class="dir-check">
+                  <input id="filter-free-only" type="checkbox" />
+                  <span>Free only</span>
+                </label>
+              </div>
+
+              <div class="dir-filter-section">
+                <div class="dir-filter-title">Category</div>
+                <div class="dir-radio-group" id="filter-category">
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="All" checked /><span>All</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Food" /><span>Food</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Housing" /><span>Housing</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Mental Health" /><span>Mental Health</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Jobs" /><span>Jobs</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Healthcare" /><span>Healthcare</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Youth" /><span>Youth</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Seniors" /><span>Seniors</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Volunteering" /><span>Volunteering</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Legal" /><span>Legal Aid</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Education" /><span>Education</span></label>
+                  <label class="dir-radio"><input name="dir-category" type="radio" value="Crisis" /><span>Crisis</span></label>
+                </div>
+              </div>
+
+              <div class="dir-filter-section">
+                <div class="dir-filter-title">Location</div>
+                <div class="dir-radio-group" id="filter-location">
+                  <label class="dir-radio"><input name="dir-location" type="radio" value="Any" checked /><span>Any</span></label>
+                  <label class="dir-radio"><input name="dir-location" type="radio" value="Fairfax County" /><span>Fairfax County</span></label>
+                  <label class="dir-radio"><input name="dir-location" type="radio" value="Loudoun County" /><span>Loudoun County</span></label>
+                  <label class="dir-radio"><input name="dir-location" type="radio" value="Arlington County" /><span>Arlington County</span></label>
+                  <label class="dir-radio"><input name="dir-location" type="radio" value="City of Alexandria" /><span>City of Alexandria</span></label>
+                  <label class="dir-radio"><input name="dir-location" type="radio" value="Prince William County" /><span>Prince William County</span></label>
+                  <label class="dir-radio"><input name="dir-location" type="radio" value="Multiple Areas" /><span>Multiple Areas</span></label>
+                </div>
+              </div>
+
+              <div class="dir-filter-section">
+                <div class="dir-filter-title">Cost</div>
+                <div class="dir-radio-group" id="filter-cost">
+                  <label class="dir-radio"><input name="dir-cost" type="radio" value="Any" checked /><span>Any</span></label>
+                  <label class="dir-radio"><input name="dir-cost" type="radio" value="Free" /><span>Free</span></label>
+                  <label class="dir-radio"><input name="dir-cost" type="radio" value="Low-Cost" /><span>Low-Cost</span></label>
+                  <label class="dir-radio"><input name="dir-cost" type="radio" value="Paid" /><span>Paid</span></label>
+                </div>
+              </div>
+
+              <div class="dir-filter-section">
+                <div class="dir-filter-title">Eligibility</div>
+                <label class="dir-check"><input class="filter-elig" type="checkbox" value="Youth" /><span>Youth</span></label>
+                <label class="dir-check"><input class="filter-elig" type="checkbox" value="Seniors" /><span>Seniors</span></label>
+                <label class="dir-check"><input class="filter-elig" type="checkbox" value="Families" /><span>Families</span></label>
+                <label class="dir-check"><input class="filter-elig" type="checkbox" value="Individuals" /><span>Individuals</span></label>
+                <label class="dir-check"><input class="filter-elig" type="checkbox" value="Income Based" /><span>Income Based</span></label>
+                <label class="dir-check"><input class="filter-elig" type="checkbox" value="Immigrants" /><span>Immigrants</span></label>
+              </div>
             </div>
+          </aside>
 
-            <div class="filter-tabs-modern" role="tablist" aria-label="Category filters">
-              <button class="tab-btn-modern is-active" data-category="All" type="button">
-                <i data-lucide="layers"></i><span>All</span>
-              </button>
-              <button class="tab-btn-modern" data-category="Housing" type="button">
-                <i data-lucide="home"></i><span>Housing</span>
-              </button>
-              <button class="tab-btn-modern" data-category="Food" type="button">
-                <i data-lucide="apple"></i><span>Food</span>
-              </button>
-              <button class="tab-btn-modern" data-category="Education" type="button">
-                <i data-lucide="book-open"></i><span>Education</span>
-              </button>
-              <button class="tab-btn-modern" data-category="Legal" type="button">
-                <i data-lucide="scale"></i><span>Legal</span>
-              </button>
-              <button class="tab-btn-modern" data-category="Crisis" type="button">
-                <i data-lucide="shield-alert"></i><span>Crisis</span>
-              </button>
+          <section class="dir-results" aria-label="Directory results">
+            <div class="section-container">
+              <div class="directory-controls scroll-reveal">
+                <div class="search-wrap-modern">
+                  <i data-lucide="search" class="search-icon"></i>
+                  <input
+                    id="directory-search"
+                    class="search-input-modern"
+                    type="text"
+                    placeholder="Search resources..."
+                    aria-label="Search resources"
+                  />
+                </div>
+              </div>
+
+              <div class="results-meta scroll-reveal">
+                <span id="results-count" class="results-count">Loading results...</span>
+              </div>
+
+              <div id="directory-list" aria-live="polite"></div>
             </div>
-          </div>
-          <div class="results-meta scroll-reveal">
-            <span id="results-count" class="results-count">Loading results...</span>
-          </div>
-
-          <div id="directory-list" aria-live="polite"></div>
+          </section>
         </div>
       </main>
 
