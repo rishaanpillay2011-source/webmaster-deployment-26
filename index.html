@@ -1,0 +1,397 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pathfinders — Northern Virginia Community Resource Network</title>
+    <meta
+      name="description"
+      content="A Northern Virginia gateway to support underserved communities with education, food, housing, and economic resources."
+    />
+    <meta name="author" content="Pathfinders" />
+
+    <script src="./theme-init.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Syne:wght@400;700;800&family=Playwrite+IE:wght@100;200;300;400&display=swap"
+    />
+    <link rel="stylesheet" href="./style.css" />
+    <link rel="stylesheet" href="./fold-effect.css" />
+  </head>
+
+  <body>
+    <div class="page">
+      <div id="nav-container"></div>
+
+      <header class="hero">
+        <!-- Animated grid canvas -->
+        <canvas class="hero-grid-canvas" id="hero-grid-canvas" aria-hidden="true"></canvas>
+        <!-- Noise grain overlay -->
+        <div class="hero-grain" aria-hidden="true"></div>
+
+        <!-- Floating keyword pills -->
+        <div class="hero-tags" aria-hidden="true">
+          <span class="hero-tag">Education</span>
+          <span class="hero-tag">Housing</span>
+          <span class="hero-tag">Crisis</span>
+          <span class="hero-tag">Food</span>
+          <span class="hero-tag">Legal</span>
+          <span class="hero-tag">Transit</span>
+        </div>
+
+        <div class="hero-inner">
+          <!-- Eyebrow -->
+          <p class="hero-eyebrow" id="hero-eyebrow">Northern Virginia Community Resource Network</p>
+
+          <!-- Main title — split chars animated by GSAP -->
+          <h1 class="hero-title" id="hero-title">Pathfinders</h1>
+
+          <!-- Subtitle -->
+          <p class="hero-subtitle" id="hero-subtitle">
+            A Northern Virginia gateway connecting underserved communities to education, food, housing, healthcare, and economic services — without barriers.
+          </p>
+
+          <!-- CTAs -->
+          <div class="hero-ctas" id="hero-ctas">
+            <a class="cta-primary" href="directory.html" id="cta-explore">
+              <span>Explore Directory</span>
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+            </a>
+            <a class="cta-ghost" href="submit.html" id="cta-submit">Submit a Resource</a>
+          </div>
+
+          <!-- Stats strip -->
+          <div class="hero-stats" id="hero-stats">
+            <div class="hero-stat"><span class="hero-stat-num">500+</span><span class="hero-stat-label">Resources Listed</span></div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat"><span class="hero-stat-num">5</span><span class="hero-stat-label">Counties Covered</span></div>
+            <div class="hero-stat-divider"></div>
+            <div class="hero-stat"><span class="hero-stat-num">6</span><span class="hero-stat-label">Service Categories</span></div>
+          </div>
+        </div>
+
+        <!-- Scroll cue -->
+        <div class="hero-scroll-cue" id="hero-scroll-cue" aria-label="Scroll down">
+          <span class="hero-scroll-label">Scroll</span>
+          <div class="hero-scroll-line"></div>
+        </div>
+      </header>
+
+      <section class="alerts-section">
+        <div class="section-container">
+          <h3 class="alerts-label gsap-split-label" id="alerts-label">COMMUNITY NOTICES</h3>
+          <div class="alerts-list" id="alerts-list">
+            <div class="alert-item gsap-alert-item">
+              <span class="alert-tag">TRANSIT</span>
+              <p>New federal grants expand transportation assistance to rural and urban communities.</p>
+            </div>
+            <div class="alert-item gsap-alert-item">
+              <span class="alert-tag">HOUSING</span>
+              <p>Emergency rental aid programs are expanding in multiple states for families facing eviction.</p>
+            </div>
+            <div class="alert-item gsap-alert-item">
+              <span class="alert-tag">FOOD</span>
+              <p>Summer meal sites and mobile pantries are increasing food access for children across the country.</p>
+            </div>
+            <div class="alert-item gsap-alert-item">
+              <span class="alert-tag">CRISIS</span>
+              <p>Mobile crisis units and shelters are offering emergency assistance in underserved NoVA neighborhoods.</p>
+            </div>
+            <div class="alert-item gsap-alert-item">
+              <span class="alert-tag">LEGAL</span>
+              <p>Free legal clinics are available for low-income families seeking housing and benefits support.</p>
+            </div>
+            <div class="alert-item gsap-alert-item">
+              <span class="alert-tag">EDUCATION</span>
+              <p>New community college scholarships are open for local residents seeking vocational training.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="mission-strip mission bg-primary">
+        <div class="section-container">
+          <p class="mission-quote gsap-split-quote" id="mission-quote">"Empowering our communities by connecting every individual to the essential resources they need to thrive."</p>
+          <div class="mission-grid">
+            <p class="mission-text gsap-split-mission">
+              Connecting Northern Virginia communities to education, food, housing, and crisis resources without barriers.
+            </p>
+            <p class="mission-text gsap-split-mission">
+              Helping underserved families navigate nonprofits, civic programs, and support services across NoVA.
+            </p>
+            <p class="mission-text gsap-split-mission">
+              Curating a community-led directory of trusted local services that uplifts equity and access.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <!-- Stack Intro Text -->
+      <section class="stack-intro" id="stack-intro">
+        <div class="stack-intro-inner">
+          <p class="stack-intro-eyebrow" id="stack-eyebrow">Northern Virginia</p>
+          <h2 class="stack-intro-headline" id="stack-headline">
+            <span class="stack-line" id="stack-line-1">We've got</span>
+            <span class="stack-line stack-line--accent" id="stack-line-2">your back.</span>
+          </h2>
+          <p class="stack-intro-sub" id="stack-sub">From food and shelter to legal aid and education — real help, close to home.</p>
+        </div>
+      </section>
+
+      <!-- Image Stacking Section -->
+      <section class="stack-section" id="stack-section">
+        <div class="stack-track">
+          <div class="stack-card" data-index="0">
+            <div class="stack-card-inner">
+              <img src="./pic_1.jpg" alt="Community volunteers working together" loading="lazy" />
+            </div>
+          </div>
+          <div class="stack-card" data-index="1">
+            <div class="stack-card-inner">
+              <img src="./pic_2.jpg" alt="People collecting food at a food bank" loading="lazy" />
+            </div>
+          </div>
+          <div class="stack-card" data-index="2">
+            <div class="stack-card-inner">
+              <img src="./pic_3.jpg" alt="Fighting hunger and poverty together" loading="lazy" />
+            </div>
+          </div>
+          <div class="stack-card" data-index="3">
+            <div class="stack-card-inner">
+              <img src="./pic_4.jpg" alt="Volunteers at a foodbank" loading="lazy" />
+            </div>
+          </div>
+          <div class="stack-card" data-index="4">
+            <div class="stack-card-inner">
+              <img src="./pic_5.jpg" alt="Community care and support" loading="lazy" />
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Fold Effect Section -->
+      <div class="screen" id="fold-effect">
+        <div class="wrapper-3d">
+          <div class="fold fold-top">
+            <div class="fold-align">
+              <div class="fold-content">
+                <div class="marquee">
+                  <div class="track">
+                    Seekers.Seekers.<span class="-focus">Seekers.</span>Seekers.Seekers.Seekers.Seekers.Seekers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Strivers.Strivers.<span class="-focus">Strivers.</span>Strivers.Strivers.Strivers.Strivers.Strivers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Dreamers.Dreamers.<span class="-focus">Dreamers.</span>Dreamers.Dreamers.Dreamers.Dreamers.Dreamers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Survivors.<span class="-focus">Survivors.</span>Survivors.Survivors.Survivors.Survivors.Survivors.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fold fold-center" id="center-fold">
+            <div class="fold-align">
+              <div class="fold-content" id="center-content">
+                <div class="marquee">
+                  <div class="track">
+                    Seekers.Seekers.<span class="-focus">Seekers.</span>Seekers.Seekers.Seekers.Seekers.Seekers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Strivers.Strivers.<span class="-focus">Strivers.</span>Strivers.Strivers.Strivers.Strivers.Strivers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Dreamers.Dreamers.<span class="-focus">Dreamers.</span>Dreamers.Dreamers.Dreamers.Dreamers.Dreamers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Survivors.<span class="-focus">Survivors.</span>Survivors.Survivors.Survivors.Survivors.Survivors.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="fold fold-bottom">
+            <div class="fold-align">
+              <div class="fold-content">
+                <div class="marquee">
+                  <div class="track">
+                    Seekers.Seekers.<span class="-focus">Seekers.</span>Seekers.Seekers.Seekers.Seekers.Seekers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Strivers.Strivers.<span class="-focus">Strivers.</span>Strivers.Strivers.Strivers.Strivers.Strivers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Dreamers.Dreamers.<span class="-focus">Dreamers.</span>Dreamers.Dreamers.Dreamers.Dreamers.Dreamers.
+                  </div>
+                </div>
+
+                <div class="marquee">
+                  <div class="track">
+                    Survivors.<span class="-focus">Survivors.</span>Survivors.Survivors.Survivors.Survivors.Survivors.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <section class="allinone-section">
+        <div class="section-container">
+          <h2 class="allinone-text text">All In One Place</h2>
+        </div>
+      </section>
+
+      <section class="parallax-section" id="parallax-section">
+        <div class="parallax-frame">
+          <div class="parallax-layer parallax-terrain"></div>
+          <div class="parallax-layer parallax-peffect"></div>
+
+          <svg class="parallax-water" viewBox="0 0 1400 900" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+            <defs>
+              <linearGradient id="waterGradient" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stop-color="#0a1a2e" stop-opacity="0" />
+                <stop offset="8%" stop-color="#0c1f35" stop-opacity="0.4" />
+                <stop offset="18%" stop-color="#102842" stop-opacity="0.85" />
+                <stop offset="30%" stop-color="#1a4470" stop-opacity="1" />
+                <stop offset="50%" stop-color="#164b7d" stop-opacity="1" />
+                <stop offset="75%" stop-color="#0f3059" stop-opacity="1" />
+                <stop offset="100%" stop-color="#041327" stop-opacity="1" />
+              </linearGradient>
+              <filter id="bubbleGlow"><feGaussianBlur in="SourceGraphic" stdDeviation="2" /></filter>
+              <filter id="bubbleGlowSoft"><feGaussianBlur in="SourceGraphic" stdDeviation="1.2" /></filter>
+            </defs>
+            <rect width="1400" height="900" fill="url(#waterGradient)"/>
+            <!-- Sandy seafloor, no corals -->
+            <path class="seafloor" d="M0,800 C150,760 300,800 450,775 C600,750 760,800 900,775 C1040,750 1180,800 1400,768 L1400,900 L0,900 Z" />
+            <path class="sand" d="M0,800 C200,768 350,800 520,782 C700,762 860,800 1040,778 C1220,756 1400,800 1400,850 L0,850 Z" opacity="0.5" />
+            <!-- Bubbles — more spread, varied sizes -->
+            <circle class="bubble bubble-1"  cx="80"  cy="850" r="8"  fill="rgba(255,255,255,0.18)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-2"  cx="180" cy="790" r="6"  fill="rgba(255,255,255,0.14)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-3"  cx="260" cy="840" r="10" fill="rgba(255,255,255,0.20)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-4"  cx="340" cy="760" r="5"  fill="rgba(255,255,255,0.12)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-5"  cx="430" cy="820" r="13" fill="rgba(255,255,255,0.22)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-6"  cx="510" cy="770" r="7"  fill="rgba(255,255,255,0.16)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-7"  cx="600" cy="850" r="9"  fill="rgba(255,255,255,0.18)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-8"  cx="680" cy="790" r="14" fill="rgba(255,255,255,0.24)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-9"  cx="760" cy="840" r="6"  fill="rgba(255,255,255,0.14)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-10" cx="840" cy="770" r="11" fill="rgba(255,255,255,0.20)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-11" cx="920" cy="830" r="8"  fill="rgba(255,255,255,0.16)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-12" cx="1010" cy="780" r="16" fill="rgba(255,255,255,0.22)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-13" cx="1090" cy="850" r="7"  fill="rgba(255,255,255,0.15)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-14" cx="1180" cy="800" r="10" fill="rgba(255,255,255,0.18)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-15" cx="1270" cy="840" r="12" fill="rgba(255,255,255,0.20)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-16" cx="1340" cy="770" r="6"  fill="rgba(255,255,255,0.13)" filter="url(#bubbleGlowSoft)"/>
+            <!-- Mid-water bubbles rising -->
+            <circle class="bubble bubble-17" cx="130" cy="700" r="7"  fill="rgba(255,255,255,0.13)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-18" cx="290" cy="640" r="5"  fill="rgba(255,255,255,0.11)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-19" cx="460" cy="680" r="9"  fill="rgba(255,255,255,0.15)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-20" cx="570" cy="600" r="6"  fill="rgba(255,255,255,0.12)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-21" cx="700" cy="650" r="11" fill="rgba(255,255,255,0.17)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-22" cx="830" cy="600" r="4"  fill="rgba(255,255,255,0.10)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-23" cx="950" cy="670" r="8"  fill="rgba(255,255,255,0.14)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-24" cx="1080" cy="620" r="6"  fill="rgba(255,255,255,0.12)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-25" cx="1220" cy="660" r="10" fill="rgba(255,255,255,0.16)" filter="url(#bubbleGlow)"/>
+            <!-- Deep-water bubbles -->
+            <circle class="bubble bubble-26" cx="200" cy="500" r="6"  fill="rgba(255,255,255,0.10)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-27" cx="400" cy="460" r="8"  fill="rgba(255,255,255,0.12)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-28" cx="620" cy="500" r="5"  fill="rgba(255,255,255,0.10)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-29" cx="780" cy="440" r="9"  fill="rgba(255,255,255,0.13)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-30" cx="1000" cy="480" r="7"  fill="rgba(255,255,255,0.11)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-31" cx="1150" cy="440" r="10" fill="rgba(255,255,255,0.14)" filter="url(#bubbleGlow)"/>
+            <circle class="bubble bubble-32" cx="1320" cy="500" r="5"  fill="rgba(255,255,255,0.10)" filter="url(#bubbleGlowSoft)"/>
+            <!-- High-water small bubbles -->
+            <circle class="bubble bubble-33" cx="320"  cy="360" r="4"  fill="rgba(255,255,255,0.09)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-34" cx="540"  cy="320" r="6"  fill="rgba(255,255,255,0.10)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-35" cx="860"  cy="350" r="5"  fill="rgba(255,255,255,0.09)" filter="url(#bubbleGlowSoft)"/>
+            <circle class="bubble bubble-34" cx="1100" cy="310" r="7"  fill="rgba(255,255,255,0.11)" filter="url(#bubbleGlow)"/>
+          </svg>
+
+          <div class="parallax-copy">
+            <span class="parallax-copy-label parallax-label">EXPLORE</span>
+            <span class="parallax-copy-label parallax-label parallax-label--further">FURTHER</span>
+            <a href="login.html" class="parallax-join-btn" id="parallax-join-btn">Join Now</a>
+            <div class="parallax-arrow-wrapper">
+              <div class="parallax-arrow"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>
+            <h3>Pathfinders</h3>
+            <p>A Northern Virginia gateway to community services, nonprofits, and civic programs for underserved communities.</p>
+          </div>
+          <div>
+            <h4>Directory</h4>
+            <div class="footer-links">
+              <a href="directory.html">Browse All</a>
+              <a href="directory.html">Housing</a>
+              <a href="directory.html">Food</a>
+            </div>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <div class="footer-links">
+              <a href="submit.html">Submit a Resource</a>
+              <a href="map.html">Resource Map</a>
+              <a href="references.html">References</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              NoVA Resource Network<br />
+              info@pathfinders.org
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Pathfinders. All rights reserved.</div>
+      </footer>
+    </div>
+
+    <!-- GSAP Core + Plugins (Local) -->
+    <script src="./gsap.min.js"></script>
+    <script src="./ScrollTrigger.min.js"></script>
+    <script src="./ScrollToPlugin.min.js"></script>
+    <script src="./SplitText.min.js"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="./smooth-scroll.js"></script>
+    <script src="./fold-effect.js"></script>
+    <script src="./resources.js"></script>
+    <script src="./nav.js"></script>
+    <script src="./index.js"></script>
+    <script src="./home-gsap.js"></script>
+    <script src="./stack-gsap.js"></script>
+  </body>
+</html>
