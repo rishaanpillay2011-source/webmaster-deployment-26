@@ -1,36 +1,4 @@
 (function () {
-  const THEME_KEY = "pathfinders-theme";
-
-  function isDark() {
-    return document.documentElement.classList.contains("dark");
-  }
-
-  function setTheme(dark) {
-    try {
-      if (dark) {
-        document.documentElement.classList.add("dark");
-        localStorage.setItem(THEME_KEY, "dark");
-      } else {
-        document.documentElement.classList.remove("dark");
-        localStorage.setItem(THEME_KEY, "light");
-      }
-    } catch (_) {
-      document.documentElement.classList.toggle("dark", dark);
-    }
-    updateThemeIcons();
-  }
-
-  function updateThemeIcons() {
-    const root = document.getElementById("nav-container");
-    if (!root) return;
-    const suns = root.querySelectorAll(".theme-icon--sun");
-    const moons = root.querySelectorAll(".theme-icon--moon");
-    if (!suns.length || !moons.length) return;
-    const dark = isDark();
-    suns.forEach((el) => el.classList.toggle("is-visible", !dark));
-    moons.forEach((el) => el.classList.toggle("is-visible", dark));
-  }
-
   const container = document.getElementById("nav-container");
   if (!container) return;
 
@@ -75,11 +43,6 @@
 
           <a class="nav-login-link" href="${base}login.html" aria-label="Sign in or register">Sign In</a>
 
-          <button type="button" class="theme-toggle" id="theme-toggle" aria-label="Toggle light or dark mode">
-            <span class="theme-icon theme-icon--sun is-visible" aria-hidden="true"><i data-lucide="sun"></i></span>
-            <span class="theme-icon theme-icon--moon" aria-hidden="true"><i data-lucide="moon"></i></span>
-          </button>
-
           <button class="nav-toggle" id="nav-toggle" aria-label="Open menu" aria-expanded="false">
             <span class="nav-toggle-icons">
               <i data-lucide="menu" id="nav-icon-open"></i>
@@ -99,18 +62,12 @@
         })
         .join("")}
       <a class="nav-overlay-login-link" href="${base}login.html">Sign In</a>
-      <button type="button" class="theme-toggle theme-toggle--overlay" id="theme-toggle-overlay" aria-label="Toggle light or dark mode">
-        <span class="theme-icon theme-icon--sun is-visible" aria-hidden="true"><i data-lucide="sun"></i></span>
-        <span class="theme-icon theme-icon--moon" aria-hidden="true"><i data-lucide="moon"></i></span>
-      </button>
     </div>
   `;
 
   const toggle = container.querySelector("#nav-toggle");
   const overlay = container.querySelector("#nav-overlay");
   const backdrop = container.querySelector("#nav-backdrop");
-  const themeBtn = container.querySelector("#theme-toggle");
-  const themeBtnOverlay = container.querySelector("#theme-toggle-overlay");
 
   function openNav() {
     overlay.classList.add("is-open");
@@ -149,18 +106,6 @@
       if (target && target.tagName === "A") closeNav();
     });
   }
-
-  function bindTheme(btn) {
-    if (!btn) return;
-    btn.addEventListener("click", () => {
-      setTheme(!isDark());
-    });
-  }
-
-  bindTheme(themeBtn);
-  bindTheme(themeBtnOverlay);
-
-  updateThemeIcons();
 
   if (window.lucide && typeof window.lucide.createIcons === "function") {
     window.lucide.createIcons();

@@ -1,22 +1,6 @@
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap');
 
 :root {
-  --bg: #F7F9FC;
-  --bg-alt: #EEF4FB;
-  --primary: #1E4D8C;
-  --accent: #5BA3D9;
-  --ink: #0F1F3D;
-  --muted: #6B7E99;
-  --border: #D0DCEA;
-  --surface: #FFFFFF;
-  --radius: 0px;
-  --font-heading: "Cormorant Garamond", serif;
-  --font-body: "DM Sans", sans-serif;
-  --font-label: "Noto Sans JP", sans-serif;
-  --nav-height: 64px;
-}
-
-html.dark {
   --bg: #0f1825;
   --bg-alt: #162033;
   --surface: #1a2840;
@@ -25,6 +9,11 @@ html.dark {
   --border: #243552;
   --primary: #5ba3d9;
   --accent: #7dbfe8;
+  --radius: 0px;
+  --font-heading: "Cormorant Garamond", serif;
+  --font-body: "DM Sans", sans-serif;
+  --font-label: "Noto Sans JP", sans-serif;
+  --nav-height: 64px;
 }
 
 * {
@@ -71,13 +60,9 @@ body:has(> .page-wave-bg)::before {
   width: 100%;
   height: 100%;
   background: url("full-waves.png") center center / cover no-repeat;
-  opacity: 0.1;
+  opacity: 0.12;
   pointer-events: none;
   z-index: 0;
-}
-
-html.dark .page-wave-bg {
-  opacity: 0.12;
 }
 
 h1,
@@ -193,14 +178,9 @@ a {
   position: sticky;
   top: 0;
   z-index: 50;
-  background: var(--surface);
+  background: #0d1520;
   border-bottom: 1px solid var(--border);
   height: var(--nav-height);
-}
-
-html.dark .site-nav {
-  background: #0d1520;
-  border-bottom-color: var(--border);
 }
 
 .site-nav-inner {
@@ -444,13 +424,8 @@ html.dark .site-nav {
   position: absolute;
   inset: 0;
   background:
-    linear-gradient(to bottom, rgba(4, 10, 22, 0.88) 0%, rgba(6, 16, 30, 0.72) 50%, rgba(4, 10, 22, 0.95) 100%);
-  z-index: 1;
-}
-
-html.dark .hero::before {
-  background:
     linear-gradient(to bottom, rgba(4, 10, 22, 0.92) 0%, rgba(6, 16, 30, 0.78) 50%, rgba(4, 10, 22, 0.97) 100%);
+  z-index: 1;
 }
 
 /* Animated grid canvas sits above the bg, below overlay */
@@ -1252,10 +1227,6 @@ html.dark .hero::before {
   position: relative;
 }
 
-html.dark .map-sidebar {
-  background: var(--surface);
-}
-
 #map-container {
   height: calc(100vh - var(--nav-height));
   width: 100%;
@@ -1499,13 +1470,9 @@ select.input-underline:focus {
 /* Footer */
 .footer {
   margin-top: 0;
-  background: var(--primary);
+  background: #080f1a;
   color: #fff;
   border-top: none;
-}
-
-html.dark .footer {
-  background: #080f1a;
 }
 
 .footer-inner {
@@ -1756,31 +1723,20 @@ html.dark .footer {
   gap: 0.75rem;
   justify-content: center;
   padding: 0.85rem 2.25rem;
-  background: var(--ink);
-  color: var(--surface);
+  background: var(--primary);
+  color: #06101e;
   border-radius: 100px;
   font-family: var(--font-body);
   font-weight: 500;
   font-size: 1rem;
   text-decoration: none;
   transition: background 0.25s ease, transform 0.25s ease, box-shadow 0.25s ease;
-  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.15);
-}
-
-.repo-btn:hover {
-  background: var(--primary);
-  transform: translateY(-3px);
-  box-shadow: 0 8px 24px rgba(30, 77, 140, 0.3);
-}
-
-html.dark .repo-btn {
-  background: var(--primary);
-  color: #06101e;
   box-shadow: 0 4px 14px rgba(91, 163, 217, 0.15);
 }
 
-html.dark .repo-btn:hover {
+.repo-btn:hover {
   background: #e8f4ff;
+  transform: translateY(-3px);
   box-shadow: 0 8px 24px rgba(91, 163, 217, 0.35);
 }
 

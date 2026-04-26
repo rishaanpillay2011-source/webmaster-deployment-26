@@ -5,15 +5,7 @@
   --step--1: clamp(3.75rem, 3.09rem + 3.29vw, 7.20rem);
   --step-0: clamp(4.50rem, 3.64rem + 4.29vw, 9.00rem);
   
-  /* Light Mode Colors */
-  --fold-bg: #F7F9FC;
-  --fold-text: #D0DCEA;
-  --fold-focus: #1E4D8C;
-  --fold-border: #D0DCEA;
-}
-
-/* Dark Mode Colors */
-html.dark {
+  /* Dark Mode Colors (Default) */
   --fold-bg: #1a1a1a;
   --fold-text: rgba(255, 255, 255, 0.4);
   --fold-focus: #6eb3e8;
