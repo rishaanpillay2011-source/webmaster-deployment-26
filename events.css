@@ -1,0 +1,364 @@
+/* css/events.css */
+
+.page-header {
+  padding: calc(var(--nav-height) + 32px) 1rem 2.5rem;
+  text-align: center;
+}
+
+.page-subtitle {
+  max-width: 600px;
+  margin: 0 auto;
+  font-size: 1.1rem;
+  color: var(--muted);
+}
+
+.events-section {
+  padding: 2rem 1rem 6rem;
+}
+
+.calendar-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  background-color: var(--bg);
+  border-radius: 12px;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+  border: 1px solid var(--border);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Dark mode overrides */
+.dark .calendar-wrapper {
+  background-color: var(--bg);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+}
+
+.calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 1.5rem;
+  border-bottom: 1px solid var(--border);
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.calendar-header-left {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.calendar-month-year {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendar-month-name {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin: 0;
+  line-height: 1.2;
+}
+
+.calendar-date-range {
+  font-size: 0.9rem;
+  color: var(--muted);
+}
+
+.calendar-header-right {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.calendar-nav-group {
+  display: inline-flex;
+  border-radius: 8px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.05);
+}
+
+.calendar-btn {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.calendar-btn:hover {
+  background: var(--surface);
+}
+
+.calendar-btn.icon-btn {
+  padding: 0.5rem;
+  width: 36px;
+  height: 36px;
+}
+
+.calendar-btn:first-child {
+  border-top-left-radius: 8px;
+  border-bottom-left-radius: 8px;
+}
+
+.calendar-btn:last-child {
+  border-top-right-radius: 8px;
+  border-bottom-right-radius: 8px;
+}
+
+.calendar-btn:not(:first-child) {
+  border-left: none;
+}
+
+.calendar-btn-primary {
+  background: var(--text);
+  color: var(--bg);
+  border: 1px solid var(--text);
+  border-radius: 8px;
+  padding: 0.5rem 1rem;
+  font-size: 0.9rem;
+  font-weight: 500;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  transition: all 0.2s;
+}
+
+.calendar-btn-primary:hover {
+  opacity: 0.9;
+}
+
+/* Grid Layout */
+.calendar-grid {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  /* Force the grid to never be wider than its container */
+  overflow: hidden;
+}
+
+/*
+  Use a shared fixed table layout by making both the weekday header row
+  and the day-grid use `table-layout: fixed`-equivalent behaviour via
+  a single CSS grid on the outer wrapper. The trick is to wrap both rows
+  inside ONE grid so the column widths are truly shared and pixel-perfect.
+*/
+.calendar-weekdays,
+.calendar-days {
+  /* Both use the same 7-column definition */
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+}
+
+.calendar-weekdays {
+  border-bottom: 1px solid var(--border);
+  background: var(--surface);
+}
+
+.calendar-weekday {
+  padding: 0.75rem;
+  text-align: center;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text);
+  border-right: 1px solid var(--border);
+  box-sizing: border-box;
+}
+
+.calendar-weekday:last-child {
+  border-right: none;
+}
+
+.calendar-days {
+  grid-auto-rows: minmax(120px, auto);
+}
+
+.calendar-day {
+  border-right: 1px solid var(--border);
+  border-bottom: 1px solid var(--border);
+  padding: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  transition: background-color 0.2s;
+  min-height: 120px;
+  /* Critical: prevent this cell from growing wider than its column */
+  min-width: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.calendar-day:nth-child(7n) {
+  border-right: none;
+}
+
+.calendar-day.other-month {
+  background-color: rgba(0, 0, 0, 0.02);
+}
+
+.dark .calendar-day.other-month {
+  background-color: rgba(255, 255, 255, 0.02);
+}
+
+.calendar-day:hover {
+  background-color: var(--surface);
+}
+
+.day-header {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.day-number {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--text);
+  width: 28px;
+  height: 28px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+}
+
+.calendar-day.other-month .day-number {
+  color: var(--muted);
+}
+
+.calendar-day.is-today .day-number {
+  background-color: var(--primary);
+  color: white;
+  font-weight: 700;
+}
+
+.dark .calendar-day.is-today .day-number {
+  background-color: #fff;
+  color: #000;
+}
+
+.day-events {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow-y: auto;
+  flex-grow: 1;
+}
+
+/* Event Chips */
+.event-chip {
+  padding: 0.25rem 0.5rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  line-height: 1.2;
+  cursor: pointer;
+  border: 1px solid transparent;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  /* Prevent chip from overflowing the cell */
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.event-chip-name {
+  font-weight: 600;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  /* Ensure the text never forces the chip wider than the column */
+  max-width: 100%;
+  display: block;
+}
+
+.event-chip-time {
+  font-size: 0.7rem;
+  opacity: 0.8;
+}
+
+/* Colors for event categories */
+.event-health {
+  background-color: rgba(239, 68, 68, 0.1);
+  color: rgb(239, 68, 68);
+  border-color: rgba(239, 68, 68, 0.2);
+}
+.event-food {
+  background-color: rgba(245, 158, 11, 0.1);
+  color: rgb(245, 158, 11);
+  border-color: rgba(245, 158, 11, 0.2);
+}
+.event-job {
+  background-color: rgba(16, 185, 129, 0.1);
+  color: rgb(16, 185, 129);
+  border-color: rgba(16, 185, 129, 0.2);
+}
+.event-education {
+  background-color: rgba(59, 130, 246, 0.1);
+  color: rgb(59, 130, 246);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+.event-housing {
+  background-color: rgba(139, 92, 246, 0.1);
+  color: rgb(139, 92, 246);
+  border-color: rgba(139, 92, 246, 0.2);
+}
+.event-community {
+  background-color: rgba(107, 114, 128, 0.1);
+  color: rgb(107, 114, 128);
+  border-color: rgba(107, 114, 128, 0.2);
+}
+
+.dark .event-health {
+  color: rgb(252, 165, 165);
+}
+.dark .event-food {
+  color: rgb(253, 230, 138);
+}
+.dark .event-job {
+  color: rgb(110, 231, 183);
+}
+.dark .event-education {
+  color: rgb(147, 197, 253);
+}
+.dark .event-housing {
+  color: rgb(196, 181, 253);
+}
+.dark .event-community {
+  color: rgb(209, 213, 219);
+}
+
+@media (max-width: 768px) {
+  .calendar-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .calendar-header-right {
+    width: 100%;
+    justify-content: space-between;
+  }
+  .calendar-nav-group {
+    flex-grow: 1;
+  }
+  .calendar-btn {
+    flex-grow: 1;
+  }
+  .calendar-days {
+    grid-auto-rows: minmax(80px, auto);
+  }
+  .calendar-day {
+    min-height: 80px;
+    padding: 0.25rem;
+  }
+  .event-chip-time {
+    display: none;
+  }
+}

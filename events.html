@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Community Events — Pathfinders</title>
+    <meta
+      name="description"
+      content="Community events calendar for the Pathfinders network. Find local resource fairs, job fairs, food distribution, and more."
+    />
+    <script src="theme-init.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500&family=Noto+Sans+JP:wght@400;500&family=Syne:wght@400;700;800&family=Playwrite+IE:wght@100;200;300;400&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="events.css" />
+  </head>
+
+  <body>
+    <div class="page-wave-bg" aria-hidden="true"></div>
+
+    <div class="page">
+      <div id="nav-container"></div>
+
+      <header class="page-header">
+        <div class="section-container">
+          <h1 class="dir-title">Community Events</h1>
+          <p class="page-subtitle">
+            Find upcoming resource fairs, health clinics, job workshops, and food distribution days in your area.
+          </p>
+        </div>
+      </header>
+
+      <section class="events-section">
+        <div class="section-container">
+          <div class="calendar-wrapper" id="calendar-root">
+            <!-- Calendar will be injected by events.js -->
+          </div>
+        </div>
+      </section>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>
+            <h3>Pathfinders</h3>
+            <p>A Northern Virginia gateway to community services, nonprofits, and civic programs for underserved communities.</p>
+          </div>
+          <div>
+            <h4>Directory</h4>
+            <div class="footer-links">
+              <a href="directory.html">Browse All</a>
+              <a href="directory.html">Housing</a>
+              <a href="directory.html">Food</a>
+            </div>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <div class="footer-links">
+              <a href="submit.html">Submit a Resource</a>
+              <a href="map.html">Resource Map</a>
+              <a href="references.html">References</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              NoVA Resource Network<br />
+              info@pathfinders.org
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Pathfinders. All rights reserved.</div>
+      </footer>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="nav.js"></script>
+    <script src="events.js"></script>
+  </body>
+</html>
