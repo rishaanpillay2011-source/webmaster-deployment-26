@@ -1,0 +1,403 @@
+/* Fold Effect - 3-Panel Paper Fold Animation */
+
+:root {
+  --step--2: clamp(3.13rem, 2.62rem + 2.51vw, 5.76rem);
+  --step--1: clamp(3.75rem, 3.09rem + 3.29vw, 7.20rem);
+  --step-0: clamp(4.50rem, 3.64rem + 4.29vw, 9.00rem);
+  
+  /* Light Mode Colors */
+  --fold-bg: #F7F9FC;
+  --fold-text: #D0DCEA;
+  --fold-focus: #1E4D8C;
+  --fold-border: #D0DCEA;
+}
+
+/* Dark Mode Colors */
+html.dark {
+  --fold-bg: #1a1a1a;
+  --fold-text: rgba(255, 255, 255, 0.4);
+  --fold-focus: #6eb3e8;
+  --fold-border: rgba(255, 255, 255, 0.2);
+}
+
+body {
+  font-family: "Syne", sans-serif;
+  font-weight: 300;
+}
+
+.marquee {
+  font-family: 'Playwrite IE', cursive;
+  font-weight: 300;
+  border-bottom: 1px solid var(--fold-border);
+  color: var(--fold-text);
+  font-size: var(--step-0);
+  font-weight: 300;
+  height: calc(170px + 4rem);
+  overflow: hidden;
+  position: relative;
+  width: 100%;
+  transition: color 0.3s ease, border-color 0.3s ease;
+}
+
+.track {
+  height: 100%;
+  overflow: hidden;
+  padding: 2rem 0;
+  position: absolute;
+  white-space: nowrap;
+  will-change: transform;
+}
+
+.-focus {
+  color: var(--fold-focus);
+  font-weight: 300;
+  transition: color 0.3s ease;
+}
+
+/* ==================== FOLD STRUCTURE ==================== */
+
+.screen {
+  position: relative;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: var(--fold-bg);
+  padding: 2rem 0;
+  margin: 0;
+  min-height: 100vh;
+  transition: background-color 0.3s ease;
+}
+
+.wrapper-3d {
+  position: relative;
+  perspective: 35vw;
+  transform-style: preserve-3d;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.fold {
+  overflow: hidden;
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  flex: 1;
+}
+
+/* Top fold panel - rotates around bottom edge */
+.fold-top {
+  transform-origin: bottom center;
+  transform-style: preserve-3d;
+  transform: rotateX(-120deg);
+  display: none;
+}
+
+/* Center fold panel - always visible, stays flat */
+.fold-center {
+  width: 100%;
+  height: 100%;
+  transform-style: preserve-3d;
+  position: relative;
+  flex: 1;
+}
+
+/* Bottom fold panel - rotates around top edge */
+.fold-bottom {
+  transform-origin: top center;
+  transform-style: preserve-3d;
+  transform: rotateX(120deg);
+  display: none;
+}
+
+.fold-align {
+  width: 100%;
+  height: 100%;
+}
+
+/* Align fold content to match center panel positioning */
+.fold-bottom .fold-align {
+  transform: translateY(-100%);
+}
+
+.fold-top .fold-align {
+  transform: translateY(100%);
+}
+
+.fold-content {
+  width: 100%;
+}
+
+/* ==================== PARALLAX SCENE ==================== */
+
+.parallax-section {
+  position: relative;
+  overflow: hidden;
+  margin: 0;
+  height: 100vh;
+  min-height: 700px;
+}
+
+.parallax-frame {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+  background: #071524;
+  box-shadow: inset 0 0 130px rgba(0, 0, 0, 0.35);
+}
+
+.parallax-layer {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  background-size: cover;
+  will-change: transform, opacity;
+}
+
+.parallax-terrain {
+  background: linear-gradient(180deg, #5b8dcd 0%, #336ba3 36%, #163c72 72%, #071524 100%);
+  opacity: 1;
+  z-index: 1;
+}
+
+.parallax-peffect {
+  background-image:
+    linear-gradient(
+      to bottom,
+      rgba(23, 45, 74, 0.15) 0%,
+      rgba(12, 28, 50, 0.3) 50%,
+      rgba(10, 26, 46, 0.75) 80%,
+      rgba(10, 26, 46, 0.95) 100%
+    ),
+    url("p-effect.jpg");
+  background-position: center 35%, center 35%;
+  background-size: cover, cover;
+  opacity: 1;
+  transform: none;
+  z-index: 2;
+}
+
+.parallax-coral {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 4;
+  pointer-events: none;
+}
+
+.parallax-water {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  /* opacity and yPercent are set by GSAP — start below the viewport */
+  opacity: 1;
+  transform-origin: center bottom;
+  will-change: transform;
+}
+
+.parallax-copy {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  pointer-events: auto;
+  z-index: 6;
+}
+
+.parallax-copy-label {
+  position: absolute;
+  top: 38%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-family: "Syne", sans-serif;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  line-height: 0.9;
+  color: #ffffff;
+  text-transform: uppercase;
+  text-shadow: 0 20px 45px rgba(0, 0, 0, 0.3);
+  font-size: clamp(4rem, 9vw, 6.5rem);
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.parallax-label {
+  opacity: 1;
+}
+
+.parallax-label--further {
+  opacity: 0;
+}
+
+.parallax-join-btn {
+  position: absolute;
+  top: 58%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  padding: 1.2rem 3.2rem;
+  background: rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 100px;
+  color: #ffffff;
+  font-family: "Syne", sans-serif;
+  font-weight: 700;
+  font-size: 1.1rem;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  text-decoration: none;
+  opacity: 0;
+  pointer-events: none;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.parallax-join-btn:hover {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(255, 255, 255, 0.4);
+  transform: translate(-50%, -55%) scale(1.05);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.3);
+  letter-spacing: 0.15em;
+}
+
+.parallax-join-btn:active {
+  transform: translate(-50%, -48%) scale(0.98);
+}
+
+.parallax-arrow-wrapper {
+  position: absolute;
+  bottom: 16%;
+  left: 50%;
+  transform: translateX(-50%);
+  pointer-events: auto;
+}
+
+.parallax-arrow {
+  width: 2.8rem;
+  height: 2.8rem;
+  border-radius: 999px;
+  border: 2px solid rgba(255, 255, 255, 0.95);
+  display: grid;
+  place-items: center;
+  opacity: 1;
+  box-shadow: 0 18px 36px rgba(0, 0, 0, 0.22);
+  cursor: pointer;
+  background: rgba(255, 255, 255, 0.18);
+  backdrop-filter: blur(10px);
+  transition: transform 0.25s ease, opacity 0.25s ease;
+  z-index: 9;
+}
+
+.parallax-arrow::before {
+  content: '';
+  width: 1rem;
+  height: 1rem;
+  border-right: 2px solid rgba(255, 255, 255, 0.95);
+  border-bottom: 2px solid rgba(255, 255, 255, 0.95);
+  transform: rotate(45deg);
+  display: block;
+}
+
+.parallax-water circle {
+  filter: blur(0.4px);
+}
+
+.parallax-water .bubble {
+  opacity: 0.9;
+  filter: blur(0.35px);
+}
+
+.parallax-water .seafloor {
+  fill: #0c2e4d;
+}
+
+.parallax-water .coral-branch {
+  fill: #d96b8e;
+}
+
+.parallax-water .coral-fan {
+  fill: #ffb86b;
+}
+
+.parallax-water .coral-sponge {
+  fill: #f7c94d;
+}
+
+.parallax-water .seaweed {
+  fill: #4fbf79;
+}
+
+.parallax-water .sand {
+  fill: #cfa668;
+}
+
+.parallax-arrow:hover {
+  transform: scale(1.08);
+}
+
+.bubble {
+  animation: bubbleRise 10s linear infinite;
+  opacity: 0.7;
+}
+
+.bubble-1 { animation-duration: 8.5s; animation-delay: 0s; }
+.bubble-2 { animation-duration: 9.5s; animation-delay: -2s; }
+.bubble-3 { animation-duration: 8.2s; animation-delay: -1s; }
+.bubble-4 { animation-duration: 9.7s; animation-delay: -3s; }
+.bubble-5 { animation-duration: 10.1s; animation-delay: -4s; }
+.bubble-6 { animation-duration: 8.8s; animation-delay: -5s; }
+.bubble-7 { animation-duration: 8s; animation-delay: -2.5s; }
+.bubble-8 { animation-duration: 9.9s; animation-delay: -6s; }
+.bubble-9 { animation-duration: 8.6s; animation-delay: -4.3s; }
+.bubble-10 { animation-duration: 10.8s; animation-delay: -3.1s; }
+.bubble-11 { animation-duration: 9.6s; animation-delay: -2.2s; }
+.bubble-12 { animation-duration: 9.1s; animation-delay: -1.5s; }
+.bubble-13 { animation-duration: 10.6s; animation-delay: -3.7s; }
+.bubble-14 { animation-duration: 9.3s; animation-delay: -0.9s; }
+.bubble-15 { animation-duration: 10.2s; animation-delay: -4.1s; }
+.bubble-16 { animation-duration: 8.9s; animation-delay: -2.8s; }
+.bubble-17 { animation-duration: 9.8s; animation-delay: -3.2s; }
+.bubble-18 { animation-duration: 10.4s; animation-delay: -4.6s; }
+.bubble-19 { animation-duration: 8.7s; animation-delay: -1.9s; }
+.bubble-20 { animation-duration: 9.0s; animation-delay: -3.5s; }
+.bubble-21 { animation-duration: 9.5s; animation-delay: -2.7s; }
+.bubble-22 { animation-duration: 8.4s; animation-delay: -1.8s; }
+
+@keyframes bubbleRise {
+  0% { transform: translateY(40vh) translateX(0); opacity: 0; }
+  10% { opacity: 0.6; }
+  90% { opacity: 0.6; }
+  100% { transform: translateY(-45vh) translateX(20px); opacity: 0; }
+}
+
+@media (max-width: 900px) {
+  .parallax-section { height: 100vh; }
+  .parallax-copy {
+    transform: translate(-50%, -42%);
+  }
+  .parallax-copy-label { font-size: clamp(3.5rem, 14vw, 6rem); }
+  .parallax-arrow { width: 2.6rem; height: 2.6rem; }
+}
+
+@media (max-width: 640px) {
+  .parallax-section { height: 100vh; }
+  .parallax-copy { gap: 0.8rem; }
+  .parallax-copy_label { font-size: clamp(2.8rem, 18vw, 4.2rem); }
+  .parallax-arrow { width: 2.3rem; height: 2.3rem; z-index: 7; }
+}
