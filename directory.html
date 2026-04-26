@@ -1,0 +1,118 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Directory — Pathfinders</title>
+    <meta
+      name="description"
+      content="Search and filter approved Pathfinders resources serving underserved communities nationwide."
+    />
+
+    <script src="theme-init.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="page-wave-bg" aria-hidden="true"></div>
+
+    <div class="page">
+      <div id="nav-container"></div>
+
+      <main class="page-body">
+        <div class="section-container">
+          <h1 class="dir-title page-title scroll-reveal">Directory</h1>
+
+          <div class="directory-controls scroll-reveal">
+            <div class="search-wrap-modern">
+              <i data-lucide="search" class="search-icon"></i>
+              <input
+                id="directory-search"
+                class="search-input-modern"
+                type="text"
+                placeholder="Search resources..."
+                aria-label="Search resources"
+              />
+            </div>
+
+            <div class="filter-tabs-modern" role="tablist" aria-label="Category filters">
+              <button class="tab-btn-modern is-active" data-category="All" type="button">
+                <i data-lucide="layers"></i><span>All</span>
+              </button>
+              <button class="tab-btn-modern" data-category="Housing" type="button">
+                <i data-lucide="home"></i><span>Housing</span>
+              </button>
+              <button class="tab-btn-modern" data-category="Food" type="button">
+                <i data-lucide="apple"></i><span>Food</span>
+              </button>
+              <button class="tab-btn-modern" data-category="Education" type="button">
+                <i data-lucide="book-open"></i><span>Education</span>
+              </button>
+              <button class="tab-btn-modern" data-category="Legal" type="button">
+                <i data-lucide="scale"></i><span>Legal</span>
+              </button>
+              <button class="tab-btn-modern" data-category="Crisis" type="button">
+                <i data-lucide="shield-alert"></i><span>Crisis</span>
+              </button>
+            </div>
+          </div>
+          <div class="results-meta scroll-reveal">
+            <span id="results-count" class="results-count">Loading results...</span>
+          </div>
+
+          <div id="directory-list" aria-live="polite"></div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>
+            <h3>Pathfinders</h3>
+            <p>A public gateway to community services across underserved communities nationwide.</p>
+          </div>
+          <div>
+            <h4>Directory</h4>
+            <div class="footer-links">
+              <a href="directory.html">Browse All</a>
+              <a href="directory.html">Housing</a>
+              <a href="directory.html">Food</a>
+            </div>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <div class="footer-links">
+              <a href="submit.html">Submit a Resource</a>
+              <a href="map.html">Resource Map</a>
+              <a href="references.html">References</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              NoVA Resource Network<br />
+              info@pathfinders.org
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Pathfinders. All rights reserved.</div>
+      </footer>
+    </div>
+
+    <!-- GSAP Core + Plugins (Local) -->
+    <script src="gsap.min.js"></script>
+    <script src="ScrollTrigger.min.js"></script>
+    <script src="SplitText.min.js"></script>
+    
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script src="smooth-scroll.js"></script>
+    <script src="resources.js"></script>
+    <script src="nav.js"></script>
+    <script src="directory-gsap.js"></script>
+    <script src="directory.js"></script>
+  </body>
+</html>
