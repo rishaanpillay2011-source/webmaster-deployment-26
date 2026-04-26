@@ -1,0 +1,190 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit — Pathfinders</title>
+    <meta
+      name="description"
+      content="Submit a community resource for review."
+    />
+
+    <script src="theme-init.js"></script>
+
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,400;1,500&family=DM+Sans:wght@400;500&family=Noto+Sans+JP:wght@400;500&display=swap"
+    />
+    <link rel="stylesheet" href="style.css" />
+  </head>
+
+  <body>
+    <div class="page-wave-bg" aria-hidden="true"></div>
+
+    <div class="page">
+      <div id="nav-container"></div>
+
+      <main class="submit-shell">
+        <div class="section-container">
+          <div class="submit-container">
+            <h1 class="submit-title scroll-reveal">Add a Resource</h1>
+            <p class="submit-subtitle scroll-reveal">
+              Know a resource not listed here? Submit it for review.
+            </p>
+
+            <div id="submit-form-wrap">
+              <form id="submit-form" novalidate>
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-name">Resource Name</label>
+                  <input
+                    id="field-name"
+                    class="input-underline"
+                    type="text"
+                    required
+                    autocomplete="off"
+                    placeholder="e.g. Cornerstones"
+                  />
+                </div>
+
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-category">Category</label>
+                  <select id="field-category" class="input-underline" required>
+                    <option value="">Select a category</option>
+                    <option>Housing</option>
+                    <option>Food</option>
+                    <option>Education</option>
+                    <option>Legal</option>
+                    <option>Crisis</option>
+                    <option>Other</option>
+                  </select>
+                </div>
+
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-description">Description</label>
+                  <textarea
+                    id="field-description"
+                    class="textarea-underline"
+                    required
+                    rows="5"
+                    placeholder="Briefly describe what this resource offers and who it serves..."
+                  ></textarea>
+                </div>
+
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-address">Address</label>
+                  <input
+                    id="field-address"
+                    class="input-underline"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="e.g. 123 Main St, Fairfax, VA 22030"
+                  />
+                </div>
+
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-website">Website URL</label>
+                  <input
+                    id="field-website"
+                    class="input-underline"
+                    type="url"
+                    autocomplete="off"
+                    placeholder="https://example.org"
+                  />
+                </div>
+
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-phone">Phone Number</label>
+                  <input
+                    id="field-phone"
+                    class="input-underline"
+                    type="tel"
+                    autocomplete="off"
+                    placeholder="(703) 555-0100"
+                  />
+                </div>
+
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-submitter-name">Submitter Name</label>
+                  <input
+                    id="field-submitter-name"
+                    class="input-underline"
+                    type="text"
+                    autocomplete="off"
+                    placeholder="Your name (optional)"
+                  />
+                </div>
+
+                <div class="form-field scroll-reveal">
+                  <label class="field-label" for="field-submitter-email">Submitter Email</label>
+                  <input
+                    id="field-submitter-email"
+                    class="input-underline"
+                    type="email"
+                    autocomplete="off"
+                    placeholder="you@example.com (optional)"
+                  />
+                </div>
+
+                <button id="submit-button" class="submit-btn scroll-reveal" type="submit">
+                  Submit Resource
+                </button>
+
+                <p id="submit-error" class="error-inline" role="alert"></p>
+              </form>
+            </div>
+
+            <div id="submit-success" hidden>
+              <p class="submit-success-text">
+                Thank you. Your submission is under review.
+              </p>
+            </div>
+          </div>
+        </div>
+      </main>
+
+      <footer class="footer">
+        <div class="footer-inner">
+          <div>
+            <h3>Pathfinders</h3>
+            <p>A public gateway to community services across underserved communities nationwide.</p>
+          </div>
+          <div>
+            <h4>Directory</h4>
+            <div class="footer-links">
+              <a href="directory.html">Browse All</a>
+              <a href="directory.html">Housing</a>
+              <a href="directory.html">Food</a>
+            </div>
+          </div>
+          <div>
+            <h4>Resources</h4>
+            <div class="footer-links">
+              <a href="submit.html">Submit a Resource</a>
+              <a href="map.html">Resource Map</a>
+              <a href="references.html">References</a>
+            </div>
+          </div>
+          <div>
+            <h4>Contact</h4>
+            <p>
+              NoVA Resource Network<br />
+              info@pathfinders.org
+            </p>
+          </div>
+        </div>
+        <div class="footer-bottom">© 2026 Pathfinders. All rights reserved.</div>
+      </footer>
+    </div>
+
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- GSAP Core + Plugins (Local) -->
+    <script src="gsap.min.js"></script>
+    <script src="ScrollTrigger.min.js"></script>
+    
+    <script src="smooth-scroll.js"></script>
+    <script src="resources.js"></script>
+    <script src="nav.js"></script>
+    <script src="animations.js"></script>
+    <script src="submit.js"></script>
+  </body>
+</html>
